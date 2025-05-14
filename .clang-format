@@ -1,0 +1,14 @@
+# .clang-format
+
+BasedOnStyle: LLVM
+IndentWidth: 4
+# TabWidth: 4
+# UseTab: Never
+# ContinuationIndentWidth: 4
+# BreakBeforeBraces: Allman
+# AllowShortFunctionsOnASingleLine: Empty
+# AlignConsecutiveAssignments: true
+# AlignConsecutiveDeclarations: true
+# AlignTrailingComments: true
+# ColumnLimit: 100
+# SortIncludes: true
