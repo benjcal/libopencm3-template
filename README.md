@@ -4,7 +4,7 @@ Easy "clone and go" repository for a libopencm3 based project.
  1. git clone --recurse-submodules https://github.com/libopencm3/libopencm3-template.git your-project
  2. cd your-project
  3. make -C libopencm3 # (Only needed once)
- 4. bear -- make -C V=1 src # used to create compile_commands.json for clangd
+ 4. bear -- make -C V=1 src # (Used to generate compile_commands.json for clangd, needs "-I/usr/arm-none-eabi/include/" added)
  5. make -C src
  6. make -C src flash
 
