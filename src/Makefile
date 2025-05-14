@@ -4,6 +4,8 @@ BUILD_DIR = bin
 CFILES = main.c
 # CFILES = main-usb.c
 # CFILES += usb.c
+# CFILES = main-trace.c
+# CFILES += trace.c
 
 DEVICE=stm32f411ceu6
 
