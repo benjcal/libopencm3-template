@@ -2,7 +2,8 @@ PROJECT = firmware
 BUILD_DIR = bin
 
 CFILES = main.c
-CFILES += usb.c
+# CFILES = main-usb.c
+# CFILES += usb.c
 
 DEVICE=stm32f411ceu6
 
