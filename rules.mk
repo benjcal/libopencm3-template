@@ -50,7 +50,6 @@ CXX	= $(PREFIX)g++
 LD	= $(PREFIX)gcc
 OBJCOPY	= $(PREFIX)objcopy
 OBJDUMP	= $(PREFIX)objdump
-OOCD	?= openocd
 
 OPENCM3_INC = $(OPENCM3_DIR)/include
 
@@ -157,7 +156,8 @@ $(PROJECT).elf: $(OBJS) $(LDSCRIPT) $(LIBDEPS)
 %.flash: %.elf
 	@printf "  FLASH\t$<\n"
 	gdb -nx --batch \
-        -ex 'target extended-remote /dev/ttyACM0' \
+        -ex 'target extended-remote /dev/serial/by-id/usb-Black_Magic_Debug_Black_Magic_Probe_v1.10.2_98B6D08E-if00' \
+        -ex 'monitor tpwr enable' \
         -ex 'monitor swd_scan' \
         -ex 'attach 1' \
         -ex 'load' \
@@ -170,11 +170,14 @@ clean:
 
 debug: 
 	cgdb -nx \
-        -ex 'target extended-remote /dev/ttyACM0' \
+        -ex 'target extended-remote /dev/serial/by-id/usb-Black_Magic_Debug_Black_Magic_Probe_v1.10.2_98B6D08E-if00' \
         -ex 'monitor swdp_scan' \
         -ex 'attach 1' \
         $(PROJECT).elf
 
-.PHONY: all clean flash debug
+trace: 
+	picocom --baud 2000000 /dev/serial/by-id/usb-Black_Magic_Debug_Black_Magic_Probe_v1.10.2_98B6D08E-if02
+
+.PHONY: all clean flash debug trace
 -include $(OBJS:.o=.d)
 

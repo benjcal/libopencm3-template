@@ -31,3 +31,10 @@ void trace(const char *msg) {
     while (*msg != '\0')
         ITM_STIM8(0) = *msg++;
 }
+
+void tracec(char c) {
+    while (!(ITM_STIM8(0) & ITM_STIM_FIFOREADY))
+        ;
+
+    ITM_STIM8(0) = c;
+}

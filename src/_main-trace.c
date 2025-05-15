@@ -6,7 +6,7 @@
 int main(void) {
     rcc_clock_setup_pll(&rcc_hse_25mhz_3v3[RCC_CLOCK_3V3_96MHZ]);
 
-    trace_init(2, 5000000);
+    trace_init(TRACE_PROTOCOL_ASYNCHRONOUS, 2000000);
     trace_init_STM32F4xx();
 
     // LED PC13
